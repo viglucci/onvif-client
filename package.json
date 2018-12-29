@@ -1,7 +1,7 @@
 {
   "name": "onvif-client",
   "version": "0.0.1",
-  "description": "A client for interfacing with SOME onvif supported devices over HTTP SOAP.",
+  "description": "Naive client implementation for interfacing with SOME onvif supported devices using NodeJS.",
   "main": "index.js",
   "scripts": {
     "prepare": "npm run build",
