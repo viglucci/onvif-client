@@ -2,7 +2,7 @@
   "name": "onvif-client",
   "version": "0.0.1",
   "description": "Naive client implementation for interfacing with SOME onvif supported devices using NodeJS.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "prepare": "npm run build",
     "build": "tsc",
