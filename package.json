@@ -1,0 +1,24 @@
+{
+  "name": "onvif-client",
+  "version": "0.0.1",
+  "description": "A client for interfacing with SOME onvif supported devices over HTTP SOAP.",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "lib"
+  ],
+  "author": "Kevin Viglucci <kviglucci@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "htm": "^2.0.0",
+    "vhtml": "^2.1.0",
+    "xml-formatter": "^1.0.1"
+  },
+  "devDependencies": {
+    "typescript": "^3.2.2"
+  }
+}
