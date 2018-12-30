@@ -22,7 +22,19 @@ export class Camera {
         this.path = options.path || '/onvif/device_service';
     }
 
+    async getDeviceInformation(): Promise<any> {
+
+    }
+
     async getSystemDateAndTime(): Promise<any> {
+
+    }
+
+    async setSystemDateAndTime(): Promise<any> {
+
+    }
+
+    async setSystemFactoryDefault(): Promise<any> {
 
     }
 }
