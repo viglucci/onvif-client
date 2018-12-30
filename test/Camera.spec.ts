@@ -8,7 +8,7 @@ describe('Camera', () => {
         const camera = new Camera(options);
     });
 
-    describe('getSystemDateAndTime', () => {
+    describe('getDeviceInformation', () => {
         it('x', async () => {
             const camera = new Camera({
                 hostname: '192.168.0.17',
@@ -17,7 +17,7 @@ describe('Camera', () => {
                    password: '123456'
                 }
             });
-            await camera.getSystemDateAndTime();
+            await camera.getDeviceInformation();
         });
     });
 });

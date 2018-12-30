@@ -1,5 +1,5 @@
-import { generateSecurityDigest } from './Digest';
+import { composeSecurityDigest } from './Digest';
 
 export {
-    generateSecurityDigest
+    composeSecurityDigest as generateSecurityDigest
 };

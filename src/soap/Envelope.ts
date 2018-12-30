@@ -1,12 +1,15 @@
 import { xml, format } from '../xml';
 import EnevelopeSecurity from './EnvelopeSecurity';
+import { IEnvelopeBody } from './IEnvelopeBody';
 
 export default class Envelope {
 
     private security: EnevelopeSecurity | null;
+    private body: IEnvelopeBody | null;
 
     constructor() {
         this.security = null;
+        this.body = null;
     }
 
     setSecurityCredentials(security: EnevelopeSecurity) {
@@ -19,7 +22,14 @@ export default class Envelope {
                 <s:Header>
                     ${this.security ? this.security.serialize() : null}
                 </s:Header>
+                <s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                    ${this.body ? this.body.serialize() : null}
+                </s:Body>
             </s:Envelope>
         `);
+    }
+
+    setBody(envelopeBody: IEnvelopeBody) {
+        this.body = envelopeBody;
     }
 }

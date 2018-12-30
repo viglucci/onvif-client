@@ -1,5 +1,6 @@
+import * as request from 'request-promise';
 import * as SOAP from '../soap';
-import { generateSecurityDigest } from '../security/Digest';
+import { composeSecurityDigest } from '../security/Digest';
 
 interface SecurityCredentials {
     username: string;
@@ -34,20 +35,18 @@ export class Camera {
     }
 
     async getDeviceInformation(): Promise<any> {
-
+        const envelope = new SOAP.Envelope();
+        if (this.securityCredentials) {
+            this.decorateEnvelopeWithSecurity(this.securityCredentials, envelope);
+        }
+        envelope.setBody(new SOAP.GetDeviceInformationBody());
+        const body = envelope.serialize();
+        const response = await request(this.composeRequestOptions(body));
+        console.log(response);
     }
 
     async getSystemDateAndTime(): Promise<any> {
-        const envelope = new SOAP.Envelope();
-        if (this.securityCredentials) {
-            const securityDigest = generateSecurityDigest(
-                this.securityCredentials.username,
-                this.securityCredentials.password
-            );
-            const evelopeSecutiry = new SOAP.EnvelopeSecurity(securityDigest);
-            envelope.setSecurityCredentials(evelopeSecutiry);
-        }
-        console.log(envelope.serialize());
+
     }
 
     async setSystemDateAndTime(): Promise<any> {
@@ -56,5 +55,30 @@ export class Camera {
 
     async setSystemFactoryDefault(): Promise<any> {
 
+    }
+
+    decorateEnvelopeWithSecurity(
+        credentials: SecurityCredentials,
+        envelope: SOAP.Envelope) {
+        const securityDigest = composeSecurityDigest(
+            credentials.username,
+            credentials.password
+        );
+        const evelopeSecutiry = new SOAP.EnvelopeSecurity(securityDigest);
+        envelope.setSecurityCredentials(evelopeSecutiry);
+    }
+
+    composeRequestOptions(body: string): any {
+        return {
+            uri: `http://${this.hostname}/${this.path}`,
+            port: this.port,
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/soap+xml',
+                'Content-Length': Buffer.byteLength(body, 'utf8'),
+                charset: 'utf-8'
+            },
+            body
+        };
     }
 }

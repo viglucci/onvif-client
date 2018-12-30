@@ -1,3 +1,3 @@
-import * as format from 'xml-formatter';
+import * as format from 'prettify-xml';
 
 export default format;
