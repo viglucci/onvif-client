@@ -1,25 +1,33 @@
-import htm from 'htm';
-import vhtml from 'vhtml';
-import format from 'xml-formatter';
+// import { Camera } from './camera/Camera';
 
-const xml = htm.bind(vhtml);
+// const camera = new Camera({
+//     hostname: '192.168.0.17',
+//     port: 80,
+//     path: ''
+// });
 
-const cameraId = 'my-id';
-const cameras = [
-    {
-        id: 1
-    },
-    {
-        id: 2
-    }
-];
+// import htm from 'htm';
+// import vhtml from 'vhtml';
+// import format from 'xml-formatter';
 
-const string1 = format(xml`
-    <cameras>
-        ${cameras.map(camera => xml`
-            <camera id=${camera.id} />
-        `)}
-    </cameras>
-`);
+// const xml = htm.bind(vhtml);
 
-console.log(string1);
+// const cameraId = 'my-id';
+// const cameras = [
+//     {
+//         id: 1
+//     },
+//     {
+//         id: 2
+//     }
+// ];
+
+// const string1 = format(xml`
+//     <cameras>
+//         ${cameras.map(camera => xml`
+//             <camera id=${camera.id} />
+//         `)}
+//     </cameras>
+// `);
+
+// console.log(string1);
