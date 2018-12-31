@@ -13,12 +13,13 @@ export class Camera {
     async getDeviceInformation(): Promise<any> {
         const envelope = new SOAP.Envelope();
         envelope.setBody(new SOAP.GetDeviceInformationBody());
-        const response = await this.client.request(envelope);
-        console.log(response);
+        return await this.client.request(envelope);
     }
 
     async getSystemDateAndTime(): Promise<any> {
-
+        const envelope = new SOAP.Envelope();
+        envelope.setBody(new SOAP.GetSystemDateAndTimeBody());
+        return await this.client.request(envelope);
     }
 
     async setSystemDateAndTime(): Promise<any> {

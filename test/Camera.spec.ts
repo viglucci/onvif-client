@@ -1,3 +1,4 @@
+import {} from 'ts-jest';
 import { Camera } from '../src/camera/Camera';
 import * as dotenv from 'dotenv';
 import * as path from 'path';
@@ -16,9 +17,7 @@ beforeAll(() => {
 });
 
 describe('Camera', () => {
-
     describe('getDeviceInformation', () => {
-
         it('x', async () => {
             const camera = new Camera({
                 hostname: CAMERA_HOSTNAME,
@@ -28,6 +27,7 @@ describe('Camera', () => {
                 }
             });
             const information = await camera.getDeviceInformation();
+            console.log(information);
         });
     });
 });
