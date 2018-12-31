@@ -1,22 +1,30 @@
 import { Camera } from '../src/camera/Camera';
+import * as dotenv from 'dotenv';
+import * as path from 'path';
+
+let CAMERA_HOSTNAME;
+let CAMERA_USERNAME;
+let CAMERA_PASSWORD;
+
+beforeAll(() => {
+    dotenv.config({
+        path: path.resolve(__dirname, '../.env')
+    });
+    CAMERA_HOSTNAME = process.env.CAMERA_HOSTNAME;
+    CAMERA_USERNAME = process.env.CAMERA_USERNAME;
+    CAMERA_PASSWORD = process.env.CAMERA_PASSWORD;
+});
 
 describe('Camera', () => {
-
-    it('can be intialized', () => {
-        const options = {
-            hostname: '192.168.0.17'
-        };
-        new Camera(options);
-    });
 
     describe('getDeviceInformation', () => {
 
         it('x', async () => {
             const camera = new Camera({
-                hostname: '192.168.0.17',
+                hostname: CAMERA_HOSTNAME,
                 securityCredentials: {
-                   username: 'admin',
-                   password: '123456'
+                   username: CAMERA_USERNAME,
+                   password: CAMERA_PASSWORD
                 }
             });
             const information = await camera.getDeviceInformation();

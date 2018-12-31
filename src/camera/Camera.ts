@@ -1,8 +1,6 @@
-import * as request from 'request-promise';
-import * as SOAP from '../soap';
-import ISecurityCredentials from '../security/ICredentials';
-import { IConstructorOptions } from './IConstructorOptions';
 import SOAPClient from '../http/SOAPClient';
+import * as SOAP from '../soap';
+import { IConstructorOptions } from './IConstructorOptions';
 
 export class Camera {
 
