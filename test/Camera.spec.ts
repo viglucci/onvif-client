@@ -1,13 +1,13 @@
-import {} from 'ts-jest';
+import 'mocha';
 import { Camera } from '../src/camera/Camera';
 import * as dotenv from 'dotenv';
 import * as path from 'path';
 
-let CAMERA_HOSTNAME;
-let CAMERA_USERNAME;
-let CAMERA_PASSWORD;
+let CAMERA_HOSTNAME: any;
+let CAMERA_USERNAME: any;
+let CAMERA_PASSWORD: any;
 
-beforeAll(() => {
+before(() => {
     dotenv.config({
         path: path.resolve(__dirname, '../.env')
     });
@@ -16,7 +16,7 @@ beforeAll(() => {
     CAMERA_PASSWORD = process.env.CAMERA_PASSWORD;
 });
 
-describe('Camera', () => {
+describe.skip('Camera', () => {
     describe('getDeviceInformation', () => {
         it('x', async () => {
             const camera = new Camera({
@@ -27,7 +27,6 @@ describe('Camera', () => {
                 }
             });
             const information = await camera.getDeviceInformation();
-            console.log(information);
         });
     });
 });

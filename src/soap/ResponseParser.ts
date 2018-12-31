@@ -1,5 +1,6 @@
-export default class ResponseParser {
-    parse(xml: string): any {
 
-    }
+export default abstract class ResponseParser {
+  public static parse(xml: string): any {
+
+  }
 }
