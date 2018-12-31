@@ -1,14 +1,16 @@
 import { Camera } from '../src/camera/Camera';
 
 describe('Camera', () => {
+
     it('can be intialized', () => {
         const options = {
             hostname: '192.168.0.17'
         };
-        const camera = new Camera(options);
+        new Camera(options);
     });
 
     describe('getDeviceInformation', () => {
+
         it('x', async () => {
             const camera = new Camera({
                 hostname: '192.168.0.17',
@@ -17,7 +19,7 @@ describe('Camera', () => {
                    password: '123456'
                 }
             });
-            await camera.getDeviceInformation();
+            const information = await camera.getDeviceInformation();
         });
     });
 });
