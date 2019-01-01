@@ -16,17 +16,19 @@ before(() => {
     CAMERA_PASSWORD = process.env.CAMERA_PASSWORD;
 });
 
-describe.skip('Camera', () => {
+describe.only('Camera', () => {
     describe('getDeviceInformation', () => {
-        it('x', async () => {
-            const camera = new Camera({
-                hostname: CAMERA_HOSTNAME,
-                securityCredentials: {
-                   username: CAMERA_USERNAME,
-                   password: CAMERA_PASSWORD
-                }
-            });
-            const information = await camera.getDeviceInformation();
+        it('returns a POJO from the parsed response', async () => {
+          //TODO: Setup NOCK here to mock http calls and assert on responses
+          const camera = new Camera({
+              hostname: CAMERA_HOSTNAME,
+              securityCredentials: {
+                  username: CAMERA_USERNAME,
+                  password: CAMERA_PASSWORD
+              }
+          });
+          const data = await camera.getDeviceInformation();
+          console.log(data);
         });
     });
 });
