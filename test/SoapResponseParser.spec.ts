@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-import { slow, suite, test, timeout } from "mocha-typescript";
 import 'mocha';
+import { slow, suite, test, timeout } from "mocha-typescript";
 import ResponseParser from '../src/soap/ResponseParser';
 import XMLMockReader from './util/XMLMockReader';
 
