@@ -37,17 +37,18 @@ class SOAPClient {
     }
 
     composeRequestOptions(requestBody: string): any {
-        return {
-            uri: `http://${this.hostname}/${this.path}`,
-            port: this.port,
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/soap+xml',
-                'Content-Length': Buffer.byteLength(requestBody, 'utf8'),
-                charset: 'utf-8'
-            },
-            body: requestBody
-        };
+      const uri = `http://${this.hostname}/${this.path}`.replace(/([^:])(\/\/+)/g, '$1/');
+      return {
+          uri,
+          port: this.port,
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/soap+xml',
+              'Content-Length': Buffer.byteLength(requestBody, 'utf8'),
+              charset: 'utf-8'
+          },
+          body: requestBody
+      };
     }
 
     async request(envelope: SOAP.Envelope): Promise<any> {
